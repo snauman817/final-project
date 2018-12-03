@@ -1,14 +1,3 @@
-let scheduled = null;
-window.addEventListener("mousemove", event => {
-  if (!scheduled) {
-    setTimeout(() => {
-      document.body.textContent = `Mouse at ${scheduled.clientX}, ${scheduled.clientY}`;
-      scheduled = null;
-    }, 250);
-  }
-  scheduled = event;
-});
-
 const startGame = (time) => {
   let timer = window.setInterval(() => {
     if (time >= 0) {
@@ -28,4 +17,9 @@ const startGame = (time) => {
 
 const endGame = (startEvent) => {
   window.clearInterval(startEvent);
+};
+
+module.exports = {
+  startGame,
+  endGame,
 };
