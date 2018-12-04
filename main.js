@@ -1,10 +1,13 @@
 class Map {
   constructor(backgroundImg, spawnLocs, time = 60, currentScore = 0, highScore = 0) {
     this.time = time;
+    this.totalTime = this.time;
     this.currentScore = currentScore;
     this.highScore = highScore;
     this.backgroundImg = backgroundImg;
     this.spawnLocs = spawnLocs;
+
+    this.gameWindow = document.createElement("section");
 
     this.backgroundContainer = document.createElement("section");
     this.backgroundElement = document.createElement("img");
@@ -21,9 +24,9 @@ class Map {
     }
   }
   loadMap() {
-    this.scoreDisplay.appendChild(document.createTextNode('Score: ' + this.currentScore));
-    this.highScoreDisplay.appendChild(document.createTextNode('High Score: ' + this.highScore));
-    this.timeDisplay.appendChild(document.createTextNode('Time Left: ' + this.time));
+    this.scoreDisplay.textContent = `Score: ${this.currentScore}`;
+    this.highScoreDisplay.textContent = `High Score: ${this.highScore}`;
+    this.timeDisplay.textContent = `Time Left: ${this.totalTime}`;
 
     this.backgroundElement.setAttribute("src", this.backgroundImg)
 
@@ -39,24 +42,41 @@ class Map {
     this.dataContainer.appendChild(this.highScoreDisplay);
     this.dataContainer.appendChild(this.timeDisplay);
 
-    document.body.appendChild(this.dataContainer);
+    this.gameWindow.appendChild(this.backgroundContainer);
+    this.gameWindow.appendChild(this.dataContainer);
 
-    document.body.appendChild(this.backgroundContainer);
-  }
-  updateMap() {
-    let dataItems = document.body.querySelector("section").querySelectorAll("p");
+    document.body.appendChild(this.gameWindow);
   }
   updateScore(points) {
     this.currentScore += points;
 
     this.scoreDisplay.textContent = `Score: ${this.currentScore}`;
   }
+  rollOverTime() {
+    this.time--;
+    this.timeDisplay.textContent = `Time Left: ${this.time}`;
+
+    if(this.time < 0) {
+      this.endGame();
+    }
+
+    //somehow spawn the following thing
+    //return this.spawnLocs[this.time];
+  }
+  endGame() {
+    document.body.removeChild(this.gameWindow);
+
+    this.updateHighScore();
+
+    this.currentScore = 0;
+    this.time = this.totalTime;
+  }
 };
 
 
-window.onload = () => {
-  let map1 = new Map("https://placekitten.com/1000/600");
+//window.onload = () => {
+  let map1 = new Map("https://placekitten.com/1000/600", [], 2, 200, 0);
   map1.loadMap();
-};
+//};
 
-module.exports = Map;
+//module.exports = Map;
