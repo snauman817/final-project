@@ -5,6 +5,15 @@ class Map {
     this.highScore = highScore;
     this.backgroundImg = backgroundImg;
     this.spawnLocs = spawnLocs;
+
+    this.backgroundContainer = document.createElement("section");
+    this.backgroundElement = document.createElement("img");
+
+    this.dataContainer = document.createElement("section");
+
+    this.scoreDisplay = document.createElement("p");
+    this.highScoreDisplay = document.createElement("p");
+    this.timeDisplay = document.createElement("p");
   }
   updateHighScore() {
     if(this.currentScore > this.highScore) {
@@ -12,40 +21,41 @@ class Map {
     }
   }
   loadMap() {
-    let backgroundContainer = document.createElement("section");
-    let backgroundImg = document.createElement("img");
+    this.scoreDisplay.appendChild(document.createTextNode('Score: ' + this.currentScore));
+    this.highScoreDisplay.appendChild(document.createTextNode('High Score: ' + this.highScore));
+    this.timeDisplay.appendChild(document.createTextNode('Time Left: ' + this.time));
 
-    let dataContainer = document.createElement("section");
+    this.backgroundElement.setAttribute("src", this.backgroundImg)
 
-    let scoreDisplay = document.createElement("p");
-    let highScoreDisplay = document.createElement("p");
-    let timeDisplay = document.createElement("p");
+    this.backgroundElement.style.width = '100%';
+    this.backgroundElement.style.height = '100%';
 
-    scoreDisplay.appendChild(document.createTextNode('Score: ' + this.currentScore));
-    highScoreDisplay.appendChild(document.createTextNode('High Score: ' + this.highScore));
-    timeDisplay.appendChild(document.createTextNode('Time Left: ' + this.time));
+    this.backgroundContainer.style.width = '1000px';
+    this.backgroundContainer.style.height = '600px';
 
-    backgroundImg.setAttribute("src", this.backgroundImg)
+    this.backgroundContainer.appendChild(this.backgroundElement);
 
-    backgroundImg.style.width = '100%';
-    backgroundImg.style.height = '100%';
+    this.dataContainer.appendChild(this.scoreDisplay);
+    this.dataContainer.appendChild(this.highScoreDisplay);
+    this.dataContainer.appendChild(this.timeDisplay);
 
-    backgroundContainer.style.width = '1000px';
-    backgroundContainer.style.height = '600px';
+    document.body.appendChild(this.dataContainer);
 
-    backgroundContainer.appendChild(backgroundImg);
-
-    dataContainer.appendChild(scoreDisplay);
-    dataContainer.appendChild(highScoreDisplay);
-    dataContainer.appendChild(timeDisplay);
-
-    document.body.appendChild(dataContainer);
-
-    document.body.appendChild(backgroundContainer);
+    document.body.appendChild(this.backgroundContainer);
   }
   updateMap() {
     let dataItems = document.body.querySelector("section").querySelectorAll("p");
   }
+  updateScore(points) {
+    this.currentScore += points;
+
+    this.scoreDisplay.textContent = `Score: ${this.currentScore}`;
+  }
 };
 
-let map1 = new Map("https://defenders.org/sites/default/files/styles/homepage-feature-2015/public/northern-plains-mt-john-ruth.png?itok=L7zuWar2");
+window.onload = () => {
+  let map1 = new Map("https://defenders.org/sites/default/files/styles/homepage-feature-2015/public/northern-plains-mt-john-ruth.png?itok=L7zuWar2");
+  map1.loadMap();
+};
+
+module.export = map1;
