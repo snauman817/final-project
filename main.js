@@ -53,9 +53,10 @@ class Map {
   }
 };
 
+
 window.onload = () => {
-  let map1 = new Map("https://defenders.org/sites/default/files/styles/homepage-feature-2015/public/northern-plains-mt-john-ruth.png?itok=L7zuWar2");
+  let map1 = new Map("https://placekitten.com/1000/600");
   map1.loadMap();
 };
 
-module.export = map1;
+module.exports = Map;
