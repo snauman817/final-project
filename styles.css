@@ -61,7 +61,26 @@ body, html{
 .one {
   width: 200px;
   height:150px;
-  float: left;
   padding-top: 70px;
   margin-left: 50px
 }
+
+.column {
+    float: left;
+    width: 30%;
+    padding: 10px;
+    height: 250px;
+    margin-top: 20%;
+    margin-left: 20px;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .column img {
+    height: 100px;
+    width: 150px;
+  }
