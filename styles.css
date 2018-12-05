@@ -37,7 +37,7 @@ body, html{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: -10
+  z-index: -10;
 }
 
 .title {
@@ -93,8 +93,9 @@ body, html{
     width: 500px;
     background-color: purple;
     z-index: 10;
-    margin-top: 30%;
-    margin-left: 25%;
+    margin-top: 15%;
+    margin-left: 30%;
+    display: none;
   }
 
   .square img {
@@ -142,4 +143,118 @@ body, html{
   box-shadow: 0 9px grey;
   margin-left: 70px;
   margin-top: 50px;
+}
+
+.square2 {
+  height: 300px;
+  width: 500px;
+  background-color: gold;
+  z-index: 10;
+  margin-top: 15%;
+  margin-left: 30%;
+  display: none;
+}
+
+.square2 img {
+  height: 200px;
+  width: 250px;
+  margin-top: 20px;
+  margin-left: 20px;
+  float: left;
+}
+
+.square2 h1 {
+text-align: center;
+padding-top: 20px;
+}
+
+.square2 .button2 {
+display: inline-block;
+padding: 15px 25px;
+font-size: 10px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: black;
+background-color: lightgreen;
+border-radius: none;
+border-radius: 15px;
+box-shadow: 0 9px grey;
+margin-top: 50px;
+margin-left: 65px;
+}
+
+.square2 .play2 {
+display: inline-block;
+padding: 15px 25px;
+font-size: 10px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: black;
+background-color: lightgreen;
+border-radius: none;
+border-radius: 15px;
+box-shadow: 0 9px grey;
+margin-left: 70px;
+margin-top: 50px;
+}
+
+
+.square3 {
+  height: 300px;
+  width: 500px;
+  background-color: pink;
+  z-index: 10;
+  margin-top: 15%;
+  margin-left: 30%;
+}
+
+.square3 img {
+  height: 200px;
+  width: 250px;
+  margin-top: 20px;
+  margin-left: 20px;
+  float: left;
+}
+
+.square3 h1 {
+text-align: center;
+padding-top: 20px;
+}
+
+.square3 .button3 {
+display: inline-block;
+padding: 15px 25px;
+font-size: 10px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: black;
+background-color: lightgreen;
+border-radius: none;
+border-radius: 15px;
+box-shadow: 0 9px grey;
+margin-top: 50px;
+margin-left: 65px;
+}
+
+.square3 .play3 {
+display: inline-block;
+padding: 15px 25px;
+font-size: 10px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: black;
+background-color: lightgreen;
+border-radius: none;
+border-radius: 15px;
+box-shadow: 0 9px grey;
+margin-left: 70px;
+margin-top: 50px;
 }
