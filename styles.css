@@ -37,6 +37,7 @@ body, html{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: -10
 }
 
 .title {
@@ -72,6 +73,7 @@ body, html{
     height: 250px;
     margin-top: 20%;
     margin-left: 20px;
+    display: none;
   }
 
   .row:after {
@@ -84,3 +86,60 @@ body, html{
     height: 100px;
     width: 150px;
   }
+
+
+  .square {
+    height: 300px;
+    width: 500px;
+    background-color: purple;
+    z-index: 10;
+    margin-top: 30%;
+    margin-left: 25%;
+  }
+
+  .square img {
+    height: 200px;
+    width: 250px;
+    margin-top: 20px;
+    margin-left: 20px;
+    float: left;
+  }
+
+.square h1 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.square .button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: lightgreen;
+  border-radius: none;
+  border-radius: 15px;
+  box-shadow: 0 9px grey;
+  margin-top: 50px;
+  margin-left: 65px;
+}
+
+.square .play {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: lightgreen;
+  border-radius: none;
+  border-radius: 15px;
+  box-shadow: 0 9px grey;
+  margin-left: 70px;
+  margin-top: 50px;
+}
