@@ -30,14 +30,6 @@ const appear = (targetType) => {
    targetType.style.left = lCoordinates[Math.floor(Math.random() * 5)];
 };
 
-const shotTest = (target) => {
-  if(document.target.style.display == 'block'){
-    console.log("poop");
-  } else {
-    console.log("dump");
-  }
-}
-
 
 let targetBasic = document.createElement('button');
 let targetHard = document.createElement('button');
