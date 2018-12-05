@@ -27,6 +27,10 @@ const endGame = (startEvent) => {
   window.clearInterval(startEvent);
 };
 
+window.onload = () => {
+  startGame(2);
+};
+
 //export module for testing purposes
 module.exports = {
   startGame,
