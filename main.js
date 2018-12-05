@@ -1,11 +1,11 @@
 class Map {
-  constructor(backgroundImg, spawnLocs, time = 60, currentScore = 0, highScore = 0) {
+  constructor(backgroundImg, enemyList, time = 60, currentScore = 0, highScore = 0) {
     this.time = time;
     this.totalTime = this.time;
     this.currentScore = currentScore;
     this.highScore = highScore;
     this.backgroundImg = backgroundImg;
-    this.spawnLocs = spawnLocs;
+    this.enemyList = enemyList;
 
     this.gameWindow = document.createElement("section");
 
@@ -61,7 +61,7 @@ class Map {
     }
 
     //somehow spawn the following thing
-    //return this.spawnLocs[this.time];
+    //return this.enemyList[this.time];
   }
   endGame() {
     document.body.removeChild(this.gameWindow);
@@ -74,9 +74,14 @@ class Map {
 };
 
 
-//window.onload = () => {
-  let map1 = new Map("https://placekitten.com/1000/600", [], 2, 200, 0);
+const addMap = (url, arr, timer, score, highscore) => {
+  let map1 = new Map(url, arr, timer, score, highscore);
   map1.loadMap();
-//};
+  //return map1;
+};
 
-//module.exports = Map;
+window.onload = () => {
+  addMap("https://placekitten.com/1000/600", [], 2, 200, 0);
+};
+
+module.exports = { addMap };
