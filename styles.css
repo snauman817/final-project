@@ -1,0 +1,260 @@
+.title h1 {
+  text-align: center;
+  left: 0;
+  line-height: 200px;
+  margin: auto;
+  margin-top: -100px;
+  position: absolute;
+  top: 40%;
+  width: 100%;
+}
+
+.title h2 {
+  text-align: center;
+  left: 0;
+    line-height: 200px;
+    margin: auto;
+    margin-top: -100px;
+    position: absolute;
+    top: 45%;
+    width: 100%;
+}
+
+.title p {
+  text-align: center;
+  left: 0;
+    line-height: 200px;
+    margin: auto;
+    margin-top: -100px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+
+body, html{
+  background-image: url("background.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -10;
+}
+
+.title {
+  display: none;
+}
+
+.rectangle {
+  width: 200px;
+  height: 300px;
+  width: 100%;
+  background: silver;
+  text-align: center;
+  left: 0;
+  line-height: 200px;
+  margin: auto;
+  margin-top: -100px;
+  position: absolute;
+  top: 45%;
+
+}
+
+.one {
+  width: 200px;
+  height:150px;
+  padding-top: 70px;
+  margin-left: 50px
+}
+
+.column {
+    float: left;
+    width: 30%;
+    padding: 10px;
+    height: 250px;
+    margin-top: 20%;
+    margin-left: 20px;
+    display: none;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .column img {
+    height: 100px;
+    width: 150px;
+  }
+
+
+  .square {
+    height: 300px;
+    width: 500px;
+    background-color: purple;
+    z-index: 10;
+    margin-top: 15%;
+    margin-left: 30%;
+    display: none;
+  }
+
+  .square img {
+    height: 200px;
+    width: 250px;
+    margin-top: 20px;
+    margin-left: 20px;
+    float: left;
+  }
+
+.square h1 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.square .button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: lightgreen;
+  border-radius: none;
+  border-radius: 15px;
+  box-shadow: 0 9px grey;
+  margin-top: 50px;
+  margin-left: 65px;
+}
+
+.square .play {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: black;
+  background-color: lightgreen;
+  border-radius: none;
+  border-radius: 15px;
+  box-shadow: 0 9px grey;
+  margin-left: 70px;
+  margin-top: 50px;
+}
+
+.square2 {
+  height: 300px;
+  width: 500px;
+  background-color: gold;
+  z-index: 10;
+  margin-top: 15%;
+  margin-left: 30%;
+  display: none;
+}
+
+.square2 img {
+  height: 200px;
+  width: 250px;
+  margin-top: 20px;
+  margin-left: 20px;
+  float: left;
+}
+
+.square2 h1 {
+text-align: center;
+padding-top: 20px;
+}
+
+.square2 .button2 {
+display: inline-block;
+padding: 15px 25px;
+font-size: 10px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: black;
+background-color: lightgreen;
+border-radius: none;
+border-radius: 15px;
+box-shadow: 0 9px grey;
+margin-top: 50px;
+margin-left: 65px;
+}
+
+.square2 .play2 {
+display: inline-block;
+padding: 15px 25px;
+font-size: 10px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: black;
+background-color: lightgreen;
+border-radius: none;
+border-radius: 15px;
+box-shadow: 0 9px grey;
+margin-left: 70px;
+margin-top: 50px;
+}
+
+
+.square3 {
+  height: 300px;
+  width: 500px;
+  background-color: pink;
+  z-index: 10;
+  margin-top: 15%;
+  margin-left: 30%;
+}
+
+.square3 img {
+  height: 200px;
+  width: 250px;
+  margin-top: 20px;
+  margin-left: 20px;
+  float: left;
+}
+
+.square3 h1 {
+text-align: center;
+padding-top: 20px;
+}
+
+.square3 .button3 {
+display: inline-block;
+padding: 15px 25px;
+font-size: 10px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: black;
+background-color: lightgreen;
+border-radius: none;
+border-radius: 15px;
+box-shadow: 0 9px grey;
+margin-top: 50px;
+margin-left: 65px;
+}
+
+.square3 .play3 {
+display: inline-block;
+padding: 15px 25px;
+font-size: 10px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: black;
+background-color: lightgreen;
+border-radius: none;
+border-radius: 15px;
+box-shadow: 0 9px grey;
+margin-left: 70px;
+margin-top: 50px;
+}
