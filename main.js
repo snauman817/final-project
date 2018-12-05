@@ -1,22 +1,44 @@
 //below is all dynamic interactive functions
-//selects target from html
-
-const basicShot = () => {
-  targetBasic.style.display = "none";
-  score = score + 1;
-  return score;
-};
-
-const hardShot = () => {
-  targetHard.style.display = "none";
-  score = score + 3;
-  return score;
-};
-
-const rareShot = () => {
-  targetRare.style.display = "none";
-  score = score + 10;
-  return score;
+const createTarget = (type) => {
+  if (type == "targetBasic"){
+   let domType = document.createElement('button');
+   domType.textContent = "one";
+   document.body.appendChild(domType);
+   domType.style.display = "none";
+   domType.style.position = 'absolute';
+   domType.addEventListener("click", () => {
+     domType.style.display = "none";
+     score = score + 1;
+     return score;
+   });
+   return domType;
+ }
+  if (type == "targetHard"){
+    let domType = document.createElement('button');
+    domType.textContent = "two";
+    document.body.appendChild(domType);
+    domType.style.display = "none";
+    domType.style.position = 'absolute';
+    domType.addEventListener("click", () => {
+      domType.style.display = "none";
+      score = score + 3;
+      return score;
+    });
+    return domType;
+ }
+  if (type == "targetRare"){
+   let domType = document.createElement('button');
+   domType.textContent = "three";
+   document.body.appendChild(domType);
+   domType.style.display = "none";
+   domType.style.position = 'absolute';
+   domType.addEventListener("click", () => {
+     domType.style.display = "none";
+     score = score + 10;
+     return score;
+   });
+   return domType;
+ }
 };
 
 const tCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px"];
@@ -30,31 +52,7 @@ const appear = (targetType) => {
    targetType.style.left = lCoordinates[Math.floor(Math.random() * 5)];
 };
 
-
-let targetBasic = document.createElement('button');
-let targetHard = document.createElement('button');
-let targetRare = document.createElement('button');
-targetBasic.textContent = "one";
-targetHard.textContent = "two";
-targetRare.textContent = "three";
-document.body.appendChild(targetBasic);
-document.body.appendChild(targetHard);
-document.body.appendChild(targetRare);
-
-targetBasic.addEventListener("click", basicShot);
-targetHard.addEventListener("click", hardShot);
-targetRare.addEventListener("click", rareShot);
-
-targetBasic.style.display = "none";
-targetHard.style.display = "none";
-targetRare.style.display = "none";
-targetBasic.style.position = 'absolute';
-targetHard.style.position = 'absolute';
-targetRare.style.position = 'absolute';
-
 let score = 0;
-
-const types = [targetBasic, targetHard, targetRare];
 
 let enemyList = [appear(targetBasic),appear(targetBasic)];
 
