@@ -19,18 +19,24 @@ const rareShot = () => {
   return score;
 };
 
-const test = () => {
-  if (interval > 0){
-  setInterval(appear(), 250);
-  return interval -= 1;
-  }
-};
+const tCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px"];
+
+const lCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px"];
+
 
 const appear = (targetType) => {
    targetType.style.display = "block";
    targetType.style.top = tCoordinates[Math.floor(Math.random() * 5)];
    targetType.style.left = lCoordinates[Math.floor(Math.random() * 5)];
 };
+
+const shotTest = (target) => {
+  if(document.target.style.display == 'block'){
+    console.log("poop");
+  } else {
+    console.log("dump");
+  }
+}
 
 
 let targetBasic = document.createElement('button');
@@ -60,16 +66,8 @@ const types = [targetBasic, targetHard, targetRare];
 
 let enemyList = [appear(targetBasic),appear(targetBasic)];
 
-const tCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px"];
-
-const lCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px"];
-
-
 module.exports = {
- test,
  basicShot,
  hardShot,
  rareShot,
- tCoordinates,
- targetBasic,
 };
