@@ -1,32 +1,18 @@
-
-const startGame = (time) => {
+const startGame = (map) => {
   //creates an interval called timer
+  map.loadMap();
   let timer = window.setInterval(() => {
-    if (time >= 0) {
-      //example stuff to do
-      // {
-      let p = document.createElement("p");
-      let content = document.createTextNode(time);
-
-      p.appendChild(content);
-      document.body.appendChild(p);
-      //}
-
-      //decrements the time
-      time--;
+    if (map.time > 0) {
+      map.rollOverTime();
     } else {
-      //if the time is up, run the endGame function
-      endGame(timer);
+      map.endMap();
+      //if the time is up, stop the timer
+      window.clearInterval(timer);
     }
     //repeat interval every second
   }, 1000);
 };
 
-//send in the timer of the level as startEvent
-const endGame = (startEvent) => {
-  //clears the interval for the given timer
-  window.clearInterval(startEvent);
-};
 class Map {
   constructor(backgroundImg, enemyList, time = 60, currentScore = 0, highScore = 0) {
     this.time = time;
@@ -63,7 +49,7 @@ class Map {
     this.backgroundElement.style.height = '100%';
 
     this.backgroundContainer.style.width = '1000px';
-    this.backgroundContainer.style.height = '600px';
+    this.backgroundContainer.style.height = '650px';
 
     this.backgroundContainer.appendChild(this.backgroundElement);
 
@@ -76,8 +62,8 @@ class Map {
 
     document.body.appendChild(this.gameWindow);
   }
-  updateScore(points) {
-    this.currentScore += points;
+  updateScore(givenScore) {
+    this.currentScore = givenScore;
 
     this.scoreDisplay.textContent = `Score: ${this.currentScore}`;
   }
@@ -85,20 +71,31 @@ class Map {
     this.time--;
     this.timeDisplay.textContent = `Time Left: ${this.time}`;
 
-    if(this.time < 0) {
-      this.endGame();
+    this.updateScore(map1Score);
+
+    this.spawnEnemy();
+
+    if(this.time === 0) {
+      for(let index of this.enemyList){
+        if(index.style.display === "block"){
+          index.style.display = "none";
+        }
+      }
     }
 
     //somehow spawn the following thing
-    //return this.enemyList[this.time];
   }
-  endGame() {
+  endMap() {
     document.body.removeChild(this.gameWindow);
 
     this.updateHighScore();
 
     this.currentScore = 0;
+    map1Score = 0;
     this.time = this.totalTime;
+  }
+  spawnEnemy(){
+    appear(this.enemyList[this.time]);
   }
 };
 
@@ -110,7 +107,8 @@ const addMap = (url, arr, timer, score, highscore) => {
 
 //below is all dynamic interactive functions
 const createTarget = (type) => {
-  if (type == "targetBasic"){
+
+  if (type === 1){
    let domType = document.createElement('img');
    domType.src = "images/targetBasic.png";
    domType.setAttribute('height', '120px');
@@ -125,12 +123,11 @@ const createTarget = (type) => {
        domType.style.display = "none";
        domType.src = "images/targetBasic.png";
      }, 50);
-     score = score + 1;
-     return score;
+     map1Score += 1;
    });
    return domType;
  }
-  if (type == "targetHard"){
+  if (type === 2){
     let domType = document.createElement('img');
     domType.src = "images/targetHard.png";
     domType.setAttribute('height', '120px');
@@ -145,12 +142,11 @@ const createTarget = (type) => {
         domType.style.display = "none";
         domType.src = "images/targetHard.png";
       }, 100);
-      score = score + 3;
-      return score;
+      map1Score += 3;
     });
     return domType;
  }
-  if (type == "targetRare"){
+  if (type === 3){
    let domType = document.createElement('img');
    domType.src = "images/targetRare.png";
    domType.setAttribute('height', '120px');
@@ -165,8 +161,7 @@ const createTarget = (type) => {
        domType.style.display = "none";
        domType.src = "images/targetRare.png";
      }, 100);
-     score = score + 10;
-     return score;
+     map1Score += 10;
    });
    return domType;
  }
@@ -174,7 +169,7 @@ const createTarget = (type) => {
 
 const tCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px"];
 
-const lCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px"];
+const lCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px", "800px", "900px"];
 
 
 const appear = (targetType) => {
@@ -185,9 +180,83 @@ const appear = (targetType) => {
   } else {
    targetType.style.display = "block";
    targetType.style.top = tCoordinates[Math.floor(Math.random() * 5)];
-   targetType.style.left = lCoordinates[Math.floor(Math.random() * 5)];
- }
+   targetType.style.left = lCoordinates[Math.floor(Math.random() * 7)];
 };
+
+let map1Score = 0;
+let map1 = new Map("https://bc-gb.com/wp-content/uploads/2016/10/cbble.jpg", [
+  createTarget(1),
+  createTarget(2),
+  createTarget(1),
+  createTarget(1),
+  createTarget(3),
+  createTarget(1),
+  createTarget(2),
+  createTarget(2),
+  createTarget(2),
+  createTarget(1),
+  createTarget(1),
+  createTarget(2),
+  createTarget(2),
+  createTarget(3),
+  createTarget(2),
+], 15);
+
+let map2Score = 0;
+let map2 = new Map("https://files.gamebanana.com/img/ss/maps/5809301c4a817.jpg", [
+  createTarget(1),
+  createTarget(2),
+  createTarget(2),
+  createTarget(1),
+  createTarget(3),
+  createTarget(2),
+  createTarget(2),
+  createTarget(2),
+  createTarget(2),
+  createTarget(3),
+  createTarget(1),
+  createTarget(2),
+  createTarget(2),
+  createTarget(3),
+  createTarget(2),
+  createTarget(3),
+  createTarget(2),
+], 17);
+
+let map3Score = 0;
+let map3 = new Map("https://vignette.wikia.nocookie.net/cswikia/images/d/df/Csgo-de-vertigo.png/revision/latest?cb=20140820125311", [
+  createTarget(1),
+  createTarget(1),
+  createTarget(2),
+  createTarget(1),
+  createTarget(1),
+  createTarget(2),
+  createTarget(2),
+  createTarget(2),
+  createTarget(1),
+  createTarget(1),
+  createTarget(1),
+  createTarget(2),
+  createTarget(1),
+  createTarget(3),
+  createTarget(2),
+  createTarget(3),
+  createTarget(1),
+], 17);
+
+// window.onload = () => {
+//   addMap("https://placekitten.com/1000/600", [], 2, 200, 0);
+// };
+//
+// module.exports = {
+//  basicShot,
+//  hardShot,
+//  rareShot,
+//  addMap,
+//  startGame,
+//  endGame,
+// };
+
 
 const move = (target) => {
   let pos = 0;
@@ -202,14 +271,7 @@ const move = (target) => {
 }, 5);
 };
 
-let score = 0;
-
 let shot = new Audio('images/awpShot2.mov');
-
-window.onload = () => {
-  addMap("https://placekitten.com/1000/600", [], 2, 200, 0);
-  startGame(2);
-};
 
 module.exports = {
  basicShot,
