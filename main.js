@@ -49,7 +49,7 @@ class Map {
     this.backgroundElement.style.height = '100%';
 
     this.backgroundContainer.style.width = '1000px';
-    this.backgroundContainer.style.height = '600px';
+    this.backgroundContainer.style.height = '650px';
 
     this.backgroundContainer.appendChild(this.backgroundElement);
 
@@ -96,7 +96,6 @@ class Map {
   }
   spawnEnemy(){
     appear(this.enemyList[this.time]);
-    console.log(this.time);
   }
 };
 
@@ -148,17 +147,17 @@ const createTarget = (type) => {
 
 const tCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px"];
 
-const lCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px"];
+const lCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px", "800px", "900px"];
 
 
 const appear = (targetType) => {
    targetType.style.display = "block";
    targetType.style.top = tCoordinates[Math.floor(Math.random() * 5)];
-   targetType.style.left = lCoordinates[Math.floor(Math.random() * 5)];
+   targetType.style.left = lCoordinates[Math.floor(Math.random() * 7)];
 };
 
 let map1Score = 0;
-let map1 = new Map("https://placekitten.com/1000/600", [
+let map1 = new Map("https://bc-gb.com/wp-content/uploads/2016/10/cbble.jpg", [
   createTarget(1),
   createTarget(2),
   createTarget(1),
@@ -175,7 +174,48 @@ let map1 = new Map("https://placekitten.com/1000/600", [
   createTarget(3),
   createTarget(2),
 ], 15);
-map1.loadMap();
+
+let map2Score = 0;
+let map2 = new Map("https://files.gamebanana.com/img/ss/maps/5809301c4a817.jpg", [
+  createTarget(1),
+  createTarget(2),
+  createTarget(2),
+  createTarget(1),
+  createTarget(3),
+  createTarget(2),
+  createTarget(2),
+  createTarget(2),
+  createTarget(2),
+  createTarget(3),
+  createTarget(1),
+  createTarget(2),
+  createTarget(2),
+  createTarget(3),
+  createTarget(2),
+  createTarget(3),
+  createTarget(2),
+], 17);
+
+let map3Score = 0;
+let map3 = new Map("https://vignette.wikia.nocookie.net/cswikia/images/d/df/Csgo-de-vertigo.png/revision/latest?cb=20140820125311", [
+  createTarget(1),
+  createTarget(1),
+  createTarget(2),
+  createTarget(1),
+  createTarget(1),
+  createTarget(2),
+  createTarget(2),
+  createTarget(2),
+  createTarget(1),
+  createTarget(1),
+  createTarget(1),
+  createTarget(2),
+  createTarget(1),
+  createTarget(3),
+  createTarget(2),
+  createTarget(3),
+  createTarget(1),
+], 17);
 
 // window.onload = () => {
 //   addMap("https://placekitten.com/1000/600", [], 2, 200, 0);

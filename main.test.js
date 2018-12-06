@@ -1,4 +1,11 @@
-const { basicShot, hardShot, rareShot, addMap, startGame, endGame, } = require('./main');
+const {
+  basicShot,
+  hardShot,
+  rareShot,
+  addMap,
+  startGame,
+  endGame,
+} = require('./main');
 
 describe('Timer Tests', () => {
   test('timer appends numbers to doc', () => {
@@ -8,6 +15,22 @@ describe('Timer Tests', () => {
 
     expect(document.querySelectorAll('p').length).toBe(3);
   });
+  test('game ends when timer goes past 0', () => {
+
+    let map1 = addMap("https://placekitten.com/1000/600", [], 1, 200, 0);
+
+    expect(document.querySelectorAll("p").length).toBe(3);
+
+    map1.rollOverTime();
+    map1.rollOverTime();
+
+    expect(document.querySelectorAll("p").length).toBe(0);
+
+    expect(document.querySelectorAll('p').length).toBe(3);
+
+    //document.body.querySelector('section').remove();
+  });
+});
 
 describe('Map', () => {
   test('Map is appended to the document', () => {
@@ -20,7 +43,8 @@ describe('Map', () => {
 
     //document.body.querySelector('section').remove();
   });
-
+});
+describe('Score', () => {
   test('high score updates to current score if score is higher', () => {
     let map1 = addMap("https://placekitten.com/1000/600", [], 1, 200, 0);
     let paragraphs = document.querySelectorAll("p");
@@ -43,23 +67,7 @@ describe('Map', () => {
 
     //document.body.querySelector('section').remove();
   });
-
-  test('game ends when timer goes past 0', () => {
-
-    let map1 = addMap("https://placekitten.com/1000/600", [], 1, 200, 0);
-
-    expect(document.querySelectorAll("p").length).toBe(3);
-
-    map1.rollOverTime();
-    map1.rollOverTime();
-
-    expect(document.querySelectorAll("p").length).toBe(0);
-
-    expect(document.querySelectorAll('p').length).toBe(3);
-
-    //document.body.querySelector('section').remove();
-  });
-
+});
 describe('basicShot()', () => {
   test('basic item disapears', () => {
     let targetBasic = document.createElement('button');
@@ -67,10 +75,10 @@ describe('basicShot()', () => {
     targetBasic.style.display = "block";
     basicShot();
     expect(targetBasic.style.display).toBe('none');
-});
+  });
   test('score goes up by one', () => {
     let score = 0;
     basicShot();
     expect(score).toEqual(1);
-});
+  });
 });
