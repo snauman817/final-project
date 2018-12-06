@@ -111,39 +111,60 @@ const addMap = (url, arr, timer, score, highscore) => {
 //below is all dynamic interactive functions
 const createTarget = (type) => {
   if (type == "targetBasic"){
-   let domType = document.createElement('button');
-   domType.textContent = "one";
+   let domType = document.createElement('img');
+   domType.src = "images/targetBasic.png";
+   domType.setAttribute('height', '120px');
+   domType.setAttribute('width', '120px');
    document.body.appendChild(domType);
    domType.style.display = "none";
    domType.style.position = 'absolute';
    domType.addEventListener("click", () => {
-     domType.style.display = "none";
+     domType.src = "images/explosion1.png";
+     shot.play();
+     setTimeout(() => {
+       domType.style.display = "none";
+       domType.src = "images/targetBasic.png";
+     }, 50);
      score = score + 1;
      return score;
    });
    return domType;
  }
   if (type == "targetHard"){
-    let domType = document.createElement('button');
-    domType.textContent = "two";
+    let domType = document.createElement('img');
+    domType.src = "images/targetHard.png";
+    domType.setAttribute('height', '120px');
+    domType.setAttribute('width', '120px');
     document.body.appendChild(domType);
     domType.style.display = "none";
     domType.style.position = 'absolute';
     domType.addEventListener("click", () => {
-      domType.style.display = "none";
+      domType.src = "images/explosion1.png";
+      shot.play();
+      setTimeout(() => {
+        domType.style.display = "none";
+        domType.src = "images/targetHard.png";
+      }, 100);
       score = score + 3;
       return score;
     });
     return domType;
  }
   if (type == "targetRare"){
-   let domType = document.createElement('button');
-   domType.textContent = "three";
+   let domType = document.createElement('img');
+   domType.src = "images/targetRare.png";
+   domType.setAttribute('height', '120px');
+   domType.setAttribute('width', '120px');
    document.body.appendChild(domType);
    domType.style.display = "none";
-   domType.style.position = 'absolute';
+   domType.style.position = 'relative';
    domType.addEventListener("click", () => {
-     domType.style.display = "none";
+     domType.src = "images/explosion1.png";
+     shot.play();
+     setTimeout(() => {
+       domType.style.display = "none";
+       domType.src = "images/targetRare.png";
+     }, 100);
      score = score + 10;
      return score;
    });
@@ -157,14 +178,33 @@ const lCoordinates = ["200px", "300px", "400px", "500px", "600px", "700px"];
 
 
 const appear = (targetType) => {
+  if(targetType.style.position === "relative") {
+   targetType.style.display = "block";
+   targetType.style.position = "relative";
+    move(targetType);
+  } else {
    targetType.style.display = "block";
    targetType.style.top = tCoordinates[Math.floor(Math.random() * 5)];
    targetType.style.left = lCoordinates[Math.floor(Math.random() * 5)];
+ }
+};
+
+const move = (target) => {
+  let pos = 0;
+  let id = setInterval(() => {
+    if (pos == 800) {
+      clearInterval(id);
+    } else {
+      pos++;
+      target.style.top = pos + 'px';
+      target.style.left = pos + 'px';
+  }
+}, 5);
 };
 
 let score = 0;
 
-let enemyList = [appear(targetBasic),appear(targetBasic)];
+let shot = new Audio('images/awpShot2.mov');
 
 window.onload = () => {
   addMap("https://placekitten.com/1000/600", [], 2, 200, 0);
