@@ -1,4 +1,4 @@
-const { addMap, basicShot, hardShot, rareShot, startGame, endGame } = require('./main');
+const { basicShot, hardShot, rareShot, addMap, startGame, endGame, } = require('./main');
 
 describe('Timer Tests', () => {
   test('timer appends numbers to doc', () => {

@@ -1,32 +1,18 @@
-
-const startGame = (time) => {
+const startGame = (map) => {
   //creates an interval called timer
+  map.loadMap();
   let timer = window.setInterval(() => {
-    if (time >= 0) {
-      //example stuff to do
-      // {
-      let p = document.createElement("p");
-      let content = document.createTextNode(time);
-
-      p.appendChild(content);
-      document.body.appendChild(p);
-      //}
-
-      //decrements the time
-      time--;
+    if (map.time > 0) {
+      map.rollOverTime();
     } else {
-      //if the time is up, run the endGame function
-      endGame(timer);
+      map.endMap();
+      //if the time is up, stop the timer
+      window.clearInterval(timer);
     }
     //repeat interval every second
   }, 1000);
 };
 
-//send in the timer of the level as startEvent
-const endGame = (startEvent) => {
-  //clears the interval for the given timer
-  window.clearInterval(startEvent);
-};
 class Map {
   constructor(backgroundImg, enemyList, time = 60, currentScore = 0, highScore = 0) {
     this.time = time;
@@ -76,8 +62,8 @@ class Map {
 
     document.body.appendChild(this.gameWindow);
   }
-  updateScore(points) {
-    this.currentScore += points;
+  updateScore(givenScore) {
+    this.currentScore = givenScore;
 
     this.scoreDisplay.textContent = `Score: ${this.currentScore}`;
   }
@@ -85,20 +71,32 @@ class Map {
     this.time--;
     this.timeDisplay.textContent = `Time Left: ${this.time}`;
 
-    if(this.time < 0) {
-      this.endGame();
+    this.updateScore(map1Score);
+
+    this.spawnEnemy();
+
+    if(this.time === 0) {
+      for(let index of this.enemyList){
+        if(index.style.display === "block"){
+          index.style.display = "none";
+        }
+      }
     }
 
     //somehow spawn the following thing
-    //return this.enemyList[this.time];
   }
-  endGame() {
+  endMap() {
     document.body.removeChild(this.gameWindow);
 
     this.updateHighScore();
 
     this.currentScore = 0;
+    map1Score = 0;
     this.time = this.totalTime;
+  }
+  spawnEnemy(){
+    appear(this.enemyList[this.time]);
+    console.log(this.time);
   }
 };
 
@@ -110,7 +108,7 @@ const addMap = (url, arr, timer, score, highscore) => {
 
 //below is all dynamic interactive functions
 const createTarget = (type) => {
-  if (type == "targetBasic"){
+  if (type === 1){
    let domType = document.createElement('button');
    domType.textContent = "one";
    document.body.appendChild(domType);
@@ -118,12 +116,11 @@ const createTarget = (type) => {
    domType.style.position = 'absolute';
    domType.addEventListener("click", () => {
      domType.style.display = "none";
-     score = score + 1;
-     return score;
+     map1Score += 1;
    });
    return domType;
  }
-  if (type == "targetHard"){
+  if (type === 2){
     let domType = document.createElement('button');
     domType.textContent = "two";
     document.body.appendChild(domType);
@@ -131,12 +128,11 @@ const createTarget = (type) => {
     domType.style.position = 'absolute';
     domType.addEventListener("click", () => {
       domType.style.display = "none";
-      score = score + 3;
-      return score;
+      map1Score += 3;
     });
     return domType;
  }
-  if (type == "targetRare"){
+  if (type === 3){
    let domType = document.createElement('button');
    domType.textContent = "three";
    document.body.appendChild(domType);
@@ -144,8 +140,7 @@ const createTarget = (type) => {
    domType.style.position = 'absolute';
    domType.addEventListener("click", () => {
      domType.style.display = "none";
-     score = score + 10;
-     return score;
+     map1Score += 10;
    });
    return domType;
  }
@@ -162,20 +157,35 @@ const appear = (targetType) => {
    targetType.style.left = lCoordinates[Math.floor(Math.random() * 5)];
 };
 
-let score = 0;
+let map1Score = 0;
+let map1 = new Map("https://placekitten.com/1000/600", [
+  createTarget(1),
+  createTarget(2),
+  createTarget(1),
+  createTarget(1),
+  createTarget(3),
+  createTarget(1),
+  createTarget(2),
+  createTarget(2),
+  createTarget(2),
+  createTarget(1),
+  createTarget(1),
+  createTarget(2),
+  createTarget(2),
+  createTarget(3),
+  createTarget(2),
+], 15);
+map1.loadMap();
 
-let enemyList = [appear(targetBasic),appear(targetBasic)];
-
-window.onload = () => {
-  addMap("https://placekitten.com/1000/600", [], 2, 200, 0);
-  startGame(2);
-};
-
-module.exports = {
- basicShot,
- hardShot,
- rareShot,
- addMap,
- startGame,
- endGame,
-};
+// window.onload = () => {
+//   addMap("https://placekitten.com/1000/600", [], 2, 200, 0);
+// };
+//
+// module.exports = {
+//  basicShot,
+//  hardShot,
+//  rareShot,
+//  addMap,
+//  startGame,
+//  endGame,
+// };

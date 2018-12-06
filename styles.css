@@ -32,6 +32,7 @@
 }
 
 body, html{
+  overflow: hidden;
   background-image: url("background.jpg");
   height: 100%;
   background-position: center;
@@ -204,6 +205,7 @@ margin-top: 50px;
 
 
 .square3 {
+  display: none;
   height: 300px;
   width: 500px;
   background-color: pink;
