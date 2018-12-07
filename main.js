@@ -99,10 +99,10 @@ class Map {
   }
 };
 
-const addMap = (url, arr, timer, score, highscore) => {
-  let map1 = new Map(url, arr, timer, score, highscore);
+const addMap = (url, enemyList, time) => {
+  let map1 = new Map(url, enemyList, time);
   map1.loadMap();
-  //return map1;
+  return map1;
 };
 
 //below is all dynamic interactive functions
@@ -275,10 +275,8 @@ const appear = (targetType) => {
     let shot = new Audio('images/awpShot2.mov');
 
     module.exports = {
-      basicShot,
-      hardShot,
-      rareShot,
+      createTarget,
       addMap,
       startGame,
-      endGame,
+      appear,
     };
