@@ -106,7 +106,7 @@ const addMap = (url, arr, timer, score, highscore) => {
 };
 
 //below is all dynamic interactive functions
-const createTarget = (type, mapScore) => {
+const createTarget = (type) => {
 
   if (type === 1) {
     let domType = document.createElement('img');
