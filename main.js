@@ -5,6 +5,8 @@ const startGame = (map) => {
     if (map.time > 0) {
       map.rollOverTime();
     } else {
+
+      restartMenu();
       map.endMap();
       //if the time is up, stop the timer
       window.clearInterval(timer);
@@ -273,6 +275,74 @@ const appear = (targetType) => {
     };
 
     let shot = new Audio('images/awpShot2.mov');
+
+    const goodbye = () => {
+  startButton.style.display = "none";
+  creditsButton.style.display = "none";
+  titleText.style.display = "none";
+  for(let i = 0; i < row.length; i++){
+  row[i].style.display = "block";
+}
+};
+
+
+let columns = document.querySelectorAll(".column");
+for(let i = 0; i < columns.length; i++){
+    columns[i].style.display = 'none';
+}
+
+/*let square = document.querySelector(".square");
+square.style.display = 'none';
+
+
+let square2 = document.querySelector(".square2");
+square2.style.display = 'none';
+
+
+let square3 = document.querySelector(".square3");
+square3.style.display = 'none';*/
+
+ const restartMenu = () => {
+   startButton.style.display = "block";
+   creditsButton.style.display = "block";
+   titleText.style.display = "block";
+   document.querySelector(".score1").textContent = `High Score: ${map1Score}`;
+   document.querySelector(".score2").textContent = `High Score: ${map2Score}`;
+   document.querySelector(".score3").textContent = `High Score: ${map3Score}`;
+};
+
+let startButton = document.querySelector(".game");
+let creditsButton = document.querySelector(".credits");
+let titleText = document.querySelector(".opener");
+startButton.addEventListener("click", goodbye);
+
+
+let row = document.getElementsByClassName("column");
+
+row[0].onclick =  () => {
+    startGame(map1);
+    for(let i = 0; i < columns.length; i++){
+        columns[i].style.display = 'none';
+    }
+
+};
+
+row[1].onclick =  () => {
+  startGame(map2);
+  for(let i = 0; i < columns.length; i++){
+      columns[i].style.display = 'none';
+  }
+
+};
+
+row[2].onclick =  () => {
+  startGame(map3);
+  for(let i = 0; i < columns.length; i++){
+      columns[i].style.display = 'none';
+  }
+
+};
+
 
     module.exports = {
       createTarget,

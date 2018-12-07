@@ -9,30 +9,57 @@
   width: 100%;
 }
 
-.title h2 {
+.title .game {
   text-align: center;
   left: 0;
-    line-height: 200px;
+    line-height: 80px;
     margin: auto;
     margin-top: -100px;
     position: absolute;
-    top: 45%;
-    width: 100%;
+    top: 40%;
+    width: 150px;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: black;
+    background-color: lightgreen;
+    border-radius: none;
+    border-radius: 15px;
+    box-shadow: 0 9px grey;
+    margin-left:45%;
+    margin-top: 50px;
 }
 
-.title p {
+.title .credits {
   text-align: center;
   left: 0;
-    line-height: 200px;
+    line-height: 75px;
     margin: auto;
     margin-top: -100px;
     position: absolute;
-    top: 50%;
-    width: 100%;
+    top: 55%;
+    width: 150px;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: black;
+    background-color: lightgreen;
+    border-radius: none;
+    border-radius: 15px;
+    box-shadow: 0 9px grey;
+    margin-left: 45%;
+    margin-top: 50px;
 }
 
 body, html{
-  overflow: hidden;
   background-image: url("background.jpg");
   height: 100%;
   background-position: center;
@@ -42,7 +69,7 @@ body, html{
 }
 
 .title {
-  display: none;
+  display:
 }
 
 .rectangle {
@@ -205,13 +232,13 @@ margin-top: 50px;
 
 
 .square3 {
-  display: none;
   height: 300px;
   width: 500px;
   background-color: pink;
   z-index: 10;
   margin-top: 15%;
   margin-left: 30%;
+  display: none;
 }
 
 .square3 img {
