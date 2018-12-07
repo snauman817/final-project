@@ -307,8 +307,8 @@ square3.style.display = 'none';*/
    creditsButton.style.display = "block";
    titleText.style.display = "block";
    document.querySelector(".score1").textContent = `High Score: ${map1Score}`;
-   document.querySelector(".score2").textContent = `High Score: ${map2Score}`;
-   document.querySelector(".score3").textContent = `High Score: ${map3Score}`;
+   document.querySelector(".score2").textContent = `High Score: ${map1Score}`;
+   document.querySelector(".score3").textContent = `High Score: ${map1Score}`;
 };
 
 let startButton = document.querySelector(".game");
