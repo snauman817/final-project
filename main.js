@@ -275,10 +275,8 @@ const appear = (targetType) => {
     let shot = new Audio('images/awpShot2.mov');
 
     module.exports = {
-      basicShot,
-      hardShot,
-      rareShot,
+      createTarget,
       addMap,
       startGame,
-      endGame,
+      appear,
     };
